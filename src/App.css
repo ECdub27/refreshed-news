@@ -23,7 +23,10 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.app-nav-bar{
+  flex: start;
+  align-content: flex-start;
+}
 .App-link {
   color: #61dafb;
 }
