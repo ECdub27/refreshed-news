@@ -23,15 +23,26 @@ const handleClose = (event) =>{
        aria-controls= {open ? 'nav-bar-button' :undefined}
        aria-haspopup = 'true'
        aria-expanded = {open ? 'true': undefined}
-       onClick= {handleClick}>
+       onClick= {handleClick}
+       position = 'left'
+       sx={{right: 650}}>
         Explore Website
        </Button>
-       <Menu id='nav-bar-menu'
+       <Menu  id='nav-bar-menu'
        anchorElement={anchorElement}
        open={open}
        onClose ={handleClose}
-       menuListProps = {{'aria-labelledby':'nav-bar-button' }}>
-        <MenuItem className='nav-bar-i1' onClick={handleClose}>Culture</MenuItem>
+       menuListProps = {{'aria-labelledby':'nav-bar-button' }}
+       
+       anchorOrigin={{
+        vertical: 'left',
+        horizontal: 'left',
+      }}
+      transformOrigin={{
+        vertical: 'left',
+        horizontal: 'left',
+      }}>
+        <MenuItem  className='nav-bar-i1' onClick={handleClose}>Culture</MenuItem>
         <MenuItem className='nav-bar-i2' onClick={handleClose}>Sports</MenuItem>
         <MenuItem className='nav-bar-i3' onClick={handleClose}>Politics</MenuItem>
         <MenuItem className='nav-bar-i1'onClick={handleClose}>Science</MenuItem>
