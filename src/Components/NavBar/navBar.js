@@ -3,6 +3,9 @@ import { useState }  from "react";
 import  Button  from '@mui/material/Button';
 import  Menu from '@mui/material/Menu';
 import  MenuItem  from '@mui/material/MenuItem';
+import SearchBar from '../searchBar';
+
+// go to app bar and change this to prominent app bar
 
 function NavBar(){
 const [anchorElement, setAnchorElement] = useState(null);
@@ -25,7 +28,7 @@ const handleClose = (event) =>{
        aria-expanded = {open ? 'true': undefined}
        onClick= {handleClick}
        position = 'left'
-       sx={{right: 650}}>
+       sx={{right: 600}}>
         Explore Website
        </Button>
        <Menu  id='nav-bar-menu'
@@ -49,6 +52,10 @@ const handleClose = (event) =>{
         <MenuItem className='nav-bar-i2'onClick={handleClose}>Business</MenuItem>
         <MenuItem className='nav-bar-i3'onClick={handleClose}>Technology</MenuItem>
        </Menu>
+         <div>
+         <SearchBar />
+         </div>
+           
         </div>
 
 );
