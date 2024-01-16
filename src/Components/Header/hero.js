@@ -54,7 +54,7 @@ function HeroSlide() {
   };
 
   return (
-    <Box sx={{ maxWidth: 500, flexGrow: 1, marginTop: 10}}>
+    <Box sx={{ maxWidth: 500, flexGrow: 1, marginTop: 10 }}>
       <Paper
         square
         elevation={0}

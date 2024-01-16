@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import NavBar from './Components/NavBar/navBar';
 import HeroSlide from './Components/Header/hero';
+
+
 function App() {
   // make nav bar sticky
   return (
@@ -12,9 +14,29 @@ function App() {
         <HeroSlide />
       </header>
 
-      <main>
+      <div>Business</div>
 
-      </main>
+      <div>Technology</div>
+
+
+      <div>Politics</div>
+
+
+      
+      
+      
+      
+      <footer>
+        Refreshed news
+       <ul>
+        <li>About us</li>
+        <li>Licensing</li>
+        <li>Advertise</li>
+        <li>Contact Us</li>
+        <li>Terms of Service</li>
+        <li>Privacy Policy</li>
+       </ul>
+      </footer>
     </div>
   );
 }

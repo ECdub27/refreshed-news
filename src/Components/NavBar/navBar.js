@@ -161,8 +161,8 @@ function NavBar(){
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+    <Box position="sticky" sx={{ flexGrow: 1 }}>
+      <AppBar position="sticky">
         <Toolbar>
           <IconButton
             size="large"
@@ -179,7 +179,7 @@ function NavBar(){
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            MUI
+            Refreshed News App
           </Typography>
           <Search>
             <SearchIconWrapper>
