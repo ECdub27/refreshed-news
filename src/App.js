@@ -2,10 +2,12 @@ import logo from './logo.svg';
 import './App.css';
 import NavBar from './Components/NavBar/navBar';
 import HeroSlide from './Components/Header/hero';
-
+import {useState, useEffect} from 'react';
+import NewsArticle from './Components/Home/newsArticle';
 
 function App() {
   // make nav bar sticky
+
   return (
     <div className="App">
     
@@ -13,7 +15,7 @@ function App() {
       <header className="App-header">
         <HeroSlide />
       </header>
-
+     <NewsArticle />
       <div>Business</div>
 
       <div>Technology</div>
