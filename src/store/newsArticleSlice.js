@@ -7,6 +7,9 @@ export const fetchNewsArticles = createAsyncThunk('newsArticles/fetchNewsArticle
 async (article) =>{
  const response = await getNewsArticle(article);
  return response.data;
+
+
+ 
 },
 
 );
@@ -36,6 +39,7 @@ const newsArticleSlice = createSlice({
         state.isLoading = false; 
         state.error = true; 
      }, 
+     
      extraReducers(builder){
         builder.addCase(fetchNewsArticles.pending,(state) =>{
         state.isLoading = 'loading'
@@ -54,6 +58,10 @@ const newsArticleSlice = createSlice({
 export const {startGetNewsArticle, getNewsArticleSuccess, getNewsArticleFailure} = newsArticleSlice.actions;
 export default newsArticleSlice.reducer;
 
-export const selectArticles = (state) => state.articles.articles;
+export const selectArticles = (state) => state.newsArticles.articles;
 export const getNewsArticlesStatus = (state) => state.articles.status;
 export const getNewsArticleError = (state) => state.articles.error;
+
+if(selectArticles != null){
+   console.log(selectArticles);
+}
