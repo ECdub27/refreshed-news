@@ -15,7 +15,7 @@ function App() {
       <header className="App-header">
         <HeroSlide />
       </header>
-     <NewsArticle />
+     <NewsArticle/>
       <div>Business</div>
 
       <div>Technology</div>

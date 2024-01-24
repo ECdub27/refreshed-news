@@ -3,28 +3,25 @@ import { getNewsArticle } from '../api';
 
 
 
-export const fetchNewsArticles = createAsyncThunk('newsArticles/fetchNewsArticles', 
-async (article) =>{
- const response = await getNewsArticle(article);
- return response.data;
+export const fetchNewsArticles = createAsyncThunk('fetchNewsArticles', async () => {
+
+const res = await getNewsArticle('https://extract-news.p.rapidapi.com/v0/article?url=https%3A%2F%2Fwww.nbcnews.com%2Fnbcblk')
 
 
  
-},
-
-);
+});
 
 
 
 const initialState = {
 articles: [],
-error: null,
+error: false,
 isLoading: false,
 status:  'idle',
 };
 
 const newsArticleSlice = createSlice({
-    name: ' News Article',
+    name: 'newsArticle',
     initialState,
     reducers:{
      startGetNewsArticle(state){
@@ -33,7 +30,7 @@ const newsArticleSlice = createSlice({
      },
      getNewsArticleSuccess(state,action){
         state.isLoading = false;
-        state.articles = action.payload;
+        state.articles = action.payload.articles;
      },
      getNewsArticleFailure(state){
         state.isLoading = false; 
@@ -45,7 +42,8 @@ const newsArticleSlice = createSlice({
         state.isLoading = 'loading'
         }).addCase(fetchNewsArticles.fulfilled,(state,action) =>{
             state.status ='success';
-            state.article = action.payload;
+            state.article.push(action.payload)
+            // state.article = action.payload
         }).addCase(fetchNewsArticles.rejected, (state,action) =>{
             state.error = action.error.message;     
             state.status = 'failed';
