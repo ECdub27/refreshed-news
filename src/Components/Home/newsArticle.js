@@ -36,6 +36,7 @@ return (
           {selectedArticles?.article?.data?.map((i) => {
             return <ul>
               <li>{i.article}</li>
+              <li></li>
             </ul>
           })}
         </Card>
