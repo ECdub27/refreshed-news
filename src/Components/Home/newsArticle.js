@@ -33,12 +33,12 @@ return (
             > {newsArticle}</p>
           ))}
 
-          {selectedArticles?.article?.data?.map((i) => {
-            return <ul>
+          {selectedArticles?.article?.data?.map((i) =>  (
+             <ul>
               <li>{i.article}</li>
               <li></li>
             </ul>
-          })}
+          ))}
         </Card>
     </div>
 

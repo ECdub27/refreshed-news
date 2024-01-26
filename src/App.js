@@ -4,7 +4,7 @@ import NavBar from './Components/NavBar/navBar';
 import HeroSlide from './Components/Header/hero';
 import {useState, useEffect} from 'react';
 import NewsArticle from './Components/Home/newsArticle';
-
+import BusinessSection from './Components/Business/businessSection';
 function App() {
   // make nav bar sticky
 
@@ -17,7 +17,7 @@ function App() {
       </header>
      <NewsArticle/>
       <div>Business</div>
-
+       <BusinessSection />
       <div>Technology</div>
 
 
