@@ -18,15 +18,15 @@ const NewsArticle = (props) =>{
 
  useEffect(() =>{
 dispatch(fetchNewsArticles());
-},[dispatch, fetchNewsArticles]
+},[dispatch]
 
 );
 
 
 return (
     <div>
-      <Button onClick={(e) => dispatch(fetchNewsArticles())}>Click here to see articles!</Button>
-        <Card className='article-card'>
+      
+        <Card dispatch ={dispatch(fetchNewsArticles())} className='article-card'>
           {selectedArticles.map((article) => (
             <p key={article.id}
             className= 'returned article'
