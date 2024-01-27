@@ -5,7 +5,7 @@ import {getBusinessNews} from '../api';
 
 export const fetchBusinessNews = createAsyncThunk('Business News', async () =>{
 
-const response =  await getBusinessNews(`https://newsapi.org/v2/top-headlines/sources?category=businessapiKey=78df58fec805459caf086c63cbe2b3a9`)
+const response =  await getBusinessNews(`https://newsapi.org/v2/top-headlines/sources?category=businessapiKey=`)
 });
 
 
