@@ -14,7 +14,7 @@ const selectedBusinessArticles = useSelector(selectBusinessNews);
 useEffect(() =>{
 dispatch(fetchBusinessNews());
 },[dispatch]);
-
+// map out return promise also send the right headers
 return (
     <div >
        {fetchBusinessNews(selectedBusinessArticles)}
