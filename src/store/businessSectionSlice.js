@@ -6,6 +6,8 @@ import { newsapiKey } from "../api";
 export const fetchBusinessNews = createAsyncThunk('Business News', async () =>{
 
 const response =  await getBusinessNews(`https://newsapi.org/v2/top-headlines/sources?category=businessapiKey=${newsapiKey}`)
+console.log(response);
+return response.resources[1];
 });
 
 

@@ -1,4 +1,4 @@
-import {applyMiddleware,  configureStore } from '@reduxjs/toolkit';
+import {  configureStore } from '@reduxjs/toolkit';
 import newsArticleReducer from './newsArticleSlice';
 import businessNewsSliceReducer from './businessSectionSlice';
 
