@@ -1,13 +1,11 @@
 import { createAsyncThunk,createSlice } from "@reduxjs/toolkit";
 import {getBusinessNews} from '../api';
-import { newsapiKey } from "../api";
+
 
 
 export const fetchBusinessNews = createAsyncThunk('Business News', async () =>{
 
 const response =  await getBusinessNews(`https://newsapi.org/v2/top-headlines/sources?category=businessapiKey=${newsapiKey}`)
-console.log(response);
-return response.resources[1];
 });
 
 
@@ -54,6 +52,6 @@ getBusinessNewsFailure(state){
 export const {startGetBusinessNews, getBusinessNewsSuccess, getBusinessNewsFailure} = businessNewsSlice.actions
 export default businessNewsSlice.reducer;
 
- export const selectBusinessNews = (state) => state.businessNews.articles;
+ export const selectBusinessNews = (state) => state.businessNews.name;
  export const getBusinessNewsStatus = (state) => state.businessNews.status;
  export const getBusinessNewsError =(state) => state.businessNews.error;
