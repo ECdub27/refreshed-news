@@ -15,6 +15,7 @@ function App() {
       <header className="App-header">
         <HeroSlide />
       </header>
+      <main>
      <NewsArticle/>
       <div>Business</div>
        <BusinessSection />
@@ -26,7 +27,7 @@ function App() {
 
       
       
-      
+      </main>
       
       <footer>
         Refreshed news

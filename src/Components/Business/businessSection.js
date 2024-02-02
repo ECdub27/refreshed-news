@@ -4,7 +4,7 @@ import {useSelector, useDispatch} from 'react-redux';
  import { selectBusinessNews } from '../../store/businessSectionSlice';
 import { useEffect,useState } from 'react';
 import { Troubleshoot } from '@mui/icons-material';
-
+import './businessSection.css';
 
 
 const BusinessSection = () =>{
@@ -26,7 +26,7 @@ return () => {
     isMounted = false
 }
 },[status, dispatch])
-// map out return promise also send the right headers
+// promise ismapped out; lets use no referrer might need Router
 let bodyContent
 if (status === 'loading'){
  bodyContent = <div className='loader'></div>
@@ -39,7 +39,9 @@ let sortedArticles;
     bodyContent = sortedArticles.map((article) => (
         <div className='card' key= {article.id}>
 <ul key={article.id}>
-                <li key={article.id}>{article.name} <p>{article.description}</p></li>
+                <li className='list-item'key={article.id}>{article.name} <p>{article.description}</p>
+                <a href= 'https://fortune.com/'> {article.url}</a>
+                </li>
                 
 
             </ul>
