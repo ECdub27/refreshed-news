@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState }  from "react";
+import  useTheme  from '@mui/material/styles';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -17,6 +18,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 
+import { searchArticle } from '../../api';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -65,7 +67,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 function NavBar(){
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
+  const [searchItem, setSearchItem] = useState('');
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -86,6 +88,12 @@ function NavBar(){
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+
+  const handleSubmit = (e) =>{
+  e.preventDefault();
+  searchArticle(searchItem);
+
+  }
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -160,7 +168,11 @@ function NavBar(){
     </Menu>
   );
 
+
+  
+
   return (
+    
     <Box position="sticky" sx={{ flexGrow: 1 }}>
       <AppBar position="sticky">
         <Toolbar>
@@ -188,6 +200,9 @@ function NavBar(){
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
+              value={searchItem}
+              onChange ={event => setSearchItem(event.target.value)}
+              onSubmit={handleSubmit}
             />
           </Search>
           <Box sx={{ flexGrow: 1 }} />
@@ -235,6 +250,7 @@ function NavBar(){
       {renderMobileMenu}
       {renderMenu}
     </Box>
+    
   );
 }
 

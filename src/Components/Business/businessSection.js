@@ -3,7 +3,7 @@ import {fetchBusinessNews, getBusinessNewsStatus} from '../../store/businessSect
 import {useSelector, useDispatch} from 'react-redux';
  import { selectBusinessNews } from '../../store/businessSectionSlice';
 import { useEffect,useState } from 'react';
-import { Troubleshoot } from '@mui/icons-material';
+
 import './businessSection.css';
 
 
@@ -40,10 +40,18 @@ let sortedArticles;
         <div className='card' key= {article.id}>
 <ul key={article.id}>
                 <li className='list-item'key={article.id}>{article.name} <p>{article.description}</p>
-                <a href= 'https://fortune.com/'> {article.url}</a>
+                <p> {article.urlToImage}</p>
                 </li>
                 
 
+            </ul>
+            <h4 className='links-aside title'> Most Recognized Sources</h4>
+            <ul className='Links-list'>Sources
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            
             </ul>
         </div>
     ))

@@ -45,3 +45,23 @@
 main{
   background-color: #282c34;
 }
+
+@media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 480px){ 
+      main{display: inline;
+      background-color: #282c34;}
+  }
+
+
+
+  /* Footer Styles */ 
+
+  .footer-list-el{
+    display: inline-block;
+  }
+
+  
+  
+
+  
