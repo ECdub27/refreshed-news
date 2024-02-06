@@ -1,14 +1,23 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import { getNewsArticle } from '../api';
-
+import { newsapiKey } from '../api';
 
 
 export const fetchNewsArticles = createAsyncThunk('fetchNewsArticles', async () => {
 
-const res = await getNewsArticle('https://extract-news.p.rapidapi.com/v0/article?url=https%3A%2F%2Fwww.nbcnews.com%2Fnbcblk')
-
-
- 
+   const response  = await fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=78df58fec805459caf086c63cbe2b3a9', {
+		method: "GET",
+		headers: {
+			'Authorization': newsapiKey,
+			'X-API-KEY': newsapiKey,
+		}
+	}).then((response) => {
+        return response.json();
+    }).then((data) => {
+        return data.sources;
+    })
+    console.log(response)
+    return response
 });
 
 

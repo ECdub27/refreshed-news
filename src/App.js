@@ -8,36 +8,34 @@ import BusinessSection from './Components/Business/businessSection';
 // MUI themee provider
 import { ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material';
-import { green, purple } from '@mui/material/colors';
 
 
-let theme = createTheme({
+
+const theme = createTheme({
   palette: {
     primary:{
-      main: green
+      main: '#0A0F25',
+      light: '#3B3F50',
+      dark: '#070A19',
     },
     secondary:{
-      main: purple
+      main: '#5F7367',
+      light: '#7F8F85',
+      dark: '#425048'
     }
   }
 });
 
 
 
-theme =  createTheme(theme, {
-  palette: {
-    info: {
-      main: theme.palette.secondary.main,
-    }
-  }
-});
+
 
 function App() {
   // make nav bar sticky
 
   return (
     <div className="App">
-    <ThemeProvider>
+    <ThemeProvider theme={theme}>
       <NavBar className='app-nav-bar' /> 
       <header className="App-header">
         <HeroSlide />

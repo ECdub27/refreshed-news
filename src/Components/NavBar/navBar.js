@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState }  from "react";
-import  useTheme  from '@mui/material/styles';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -17,8 +17,9 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
-
+import {useTheme} from '@mui/material/styles';
 import { searchArticle } from '../../api';
+
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -70,7 +71,7 @@ function NavBar(){
   const [searchItem, setSearchItem] = useState('');
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
+  const theme = useTheme();
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -147,7 +148,7 @@ function NavBar(){
           aria-label="show 17 new notifications"
           color="inherit"
         >
-          <Badge badgeContent={17} color="error">
+          <Badge >
             <NotificationsIcon />
           </Badge>
         </IconButton>
@@ -172,7 +173,7 @@ function NavBar(){
   
 
   return (
-    
+    <ThemeProvider theme={theme}>
     <Box position="sticky" sx={{ flexGrow: 1 }}>
       <AppBar position="sticky">
         <Toolbar>
@@ -250,7 +251,7 @@ function NavBar(){
       {renderMobileMenu}
       {renderMenu}
     </Box>
-    
+    </ThemeProvider>
   );
 }
 

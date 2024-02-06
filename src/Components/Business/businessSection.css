@@ -10,3 +10,14 @@ color: bisque;
     display: inline-block;
 }
 
+.links-aside title{
+
+position: absolute;
+left:auto;
+}
+
+
+.Links-list{
+    position: absolute;
+    left:auto;
+}

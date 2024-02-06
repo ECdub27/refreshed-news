@@ -40,19 +40,12 @@ let sortedArticles;
         <div className='card' key= {article.id}>
 <ul key={article.id}>
                 <li className='list-item'key={article.id}>{article.name} <p>{article.description}</p>
-                <p> {article.urlToImage}</p>
+                <p> {article.url}</p>
                 </li>
                 
 
             </ul>
-            <h4 className='links-aside title'> Most Recognized Sources</h4>
-            <ul className='Links-list'>Sources
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            
-            </ul>
+           
         </div>
     ))
 } else {
