@@ -15,7 +15,7 @@ export const fetchNewsArticles = createAsyncThunk('fetchNewsArticles', async () 
         return response.json();
     }).then((data) => {
         return data.sources;
-    })
+    }).catch((err) => console.log(err));
     console.log(response)
     return response
 });
@@ -51,7 +51,7 @@ const newsArticleSlice = createSlice({
         state.isLoading = 'loading'
         }).addCase(fetchNewsArticles.fulfilled,(state,action) =>{
             state.status ='success';
-            state.article.push(action.payload)
+           state.articles= [...state, action.payload];
             // state.article = action.payload
         }).addCase(fetchNewsArticles.rejected, (state,action) =>{
             state.error = action.error.message;     
@@ -69,6 +69,3 @@ export const selectArticles = (state) => state.newsArticles.articles;
 export const getNewsArticlesStatus = (state) => state.articles.status;
 export const getNewsArticleError = (state) => state.articles.error;
 
-if(selectArticles != null){
-   console.log(selectArticles);
-}

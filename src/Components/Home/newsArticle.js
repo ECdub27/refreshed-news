@@ -1,13 +1,14 @@
 import { useEffect} from 'react';
 import { fetchNewsArticles } from '../../store/newsArticleSlice';
 import {useDispatch,useSelector} from 'react-redux';
-import { selectArticles } from '../../store/newsArticleSlice';
+import LinearBuffer from '../../linearBuffer';
 
 
 
 const NewsArticle = (props) =>{ 
-  const { error, status} = selectArticles;
-  const selectedArticles = useSelector(selectArticles);
+  
+  const selectedArticles = useSelector((state) => state.newsArticles.articles);
+  const { articles, error, isLoading, status } = selectedArticles;
     const dispatch = useDispatch();
 
    
@@ -19,7 +20,7 @@ const NewsArticle = (props) =>{
 
   let mounted = true 
   if(status === 'idle'){
-dispatch(fetchNewsArticles())
+dispatch(fetchNewsArticles(articles))
   }
 return () => {
   mounted = false;
@@ -28,12 +29,16 @@ return () => {
 
 
 let bodyContent
-if (status === 'loading'){
- bodyContent = <div className='loader'></div>
+if (status === 'loading' ? isLoading : true){
+ bodyContent = <div className='loader'>
+  <LinearBuffer />
+ </div>
 } else if (status === 'successful'){
-selectedArticles.slice().sort((a,b) => b.id -a.id)
+  let sortedNewsArticles;
 
-bodyContent = selectedArticles.map((article) => (
+sortedNewsArticles = selectedArticles.slice().sort((a,b) => b.id - a.id)
+
+bodyContent = sortedNewsArticles.map((article) => (
   <div className='card' key= {article.id}>
 <ul key={article.id}>
           <li className='list-item'key={article.id}>{article.name} <p>{article.description}</p>

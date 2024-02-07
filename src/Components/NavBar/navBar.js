@@ -19,6 +19,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import {useTheme} from '@mui/material/styles';
 import { searchArticle } from '../../api';
+import { useDispatch } from 'react-redux';
 
 
 
@@ -72,6 +73,7 @@ function NavBar(){
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const theme = useTheme();
+  const dispatch = useDispatch();
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -204,6 +206,7 @@ function NavBar(){
               value={searchItem}
               onChange ={event => setSearchItem(event.target.value)}
               onSubmit={handleSubmit}
+              dispatch={dispatch(searchArticle)}
             />
           </Search>
           <Box sx={{ flexGrow: 1 }} />
