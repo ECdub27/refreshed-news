@@ -5,9 +5,12 @@ import HeroSlide from './Components/Header/hero';
 import {useState, useEffect} from 'react';
 import NewsArticle from './Components/Home/newsArticle';
 import BusinessSection from './Components/Business/businessSection';
+import TechnologySection from './Components/Technology/techSection';
+import PoliticsSection from './Components/Politics/politicsSection';
 // MUI themee provider
 import { ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material';
+
 
 
 
@@ -40,20 +43,25 @@ function App() {
       <header className="App-header">
         <HeroSlide />
       </header>
+      
       <main>
      <NewsArticle/>
-      <div>
-       <BusinessSection />
-       </div>
-      <div>Technology</div>
+    </main>
 
+     <div className="Business.Section.div">
+     <div>
+        
+        <BusinessSection /> 
+        
+         </div>
+     </div>
+     <div className='Technology.Section.div'>
+        <TechnologySection />
+     </div>
+     <div className='Politics.Section.div'>
+   <PoliticsSection /> 
+     </div>
 
-      <div>Politics</div>
-
-
-      
-      
-      </main>
       <div className='footer-container'>
       <footer className='app-footber'>
         Refreshed news

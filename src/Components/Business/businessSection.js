@@ -3,7 +3,7 @@ import {fetchBusinessNews, getBusinessNewsStatus} from '../../store/businessSect
 import {useSelector, useDispatch} from 'react-redux';
  import { selectBusinessNews } from '../../store/businessSectionSlice';
 import { useEffect,useState } from 'react';
-
+import LinearBuffer from '../../linearBuffer';
 import './businessSection.css';
 
 
@@ -29,8 +29,8 @@ return () => {
 // promise ismapped out; lets use no referrer might need Router
 let bodyContent
 if (status === 'loading'){
- bodyContent = <div className='loader'></div>
-} else if (status === 'successful'){
+ bodyContent = <div className='loader'>  <LinearBuffer /> </div>
+} else if (status === 'success'){
 let sortedArticles;
 
  sortedArticles = articles.slice().sort((a,b) => b.id -a.id)
@@ -55,6 +55,7 @@ let sortedArticles;
 return (
     <div>
        <h2>Business News</h2>
+       
        {bodyContent}
     </div>
    

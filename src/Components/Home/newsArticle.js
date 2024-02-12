@@ -5,9 +5,9 @@ import LinearBuffer from '../../linearBuffer';
 
 
 
-const NewsArticle = (props) =>{ 
+const NewsArticle = () =>{ 
   
-  const selectedArticles = useSelector((state) => state.newsArticles.articles);
+  const selectedArticles = useSelector((state) => state.articles);
   const { articles, error, isLoading, status } = selectedArticles;
     const dispatch = useDispatch();
 
@@ -20,12 +20,12 @@ const NewsArticle = (props) =>{
 
   let mounted = true 
   if(status === 'idle'){
-dispatch(fetchNewsArticles(articles))
+dispatch(fetchNewsArticles())
   }
 return () => {
   mounted = false;
 }
-},[status, dispatch]);
+},[dispatch, status])
 
 
 let bodyContent

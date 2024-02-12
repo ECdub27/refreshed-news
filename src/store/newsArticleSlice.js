@@ -3,7 +3,7 @@ import { getNewsArticle } from '../api';
 import { newsapiKey } from '../api';
 
 
-export const fetchNewsArticles = createAsyncThunk('fetchNewsArticles', async () => {
+export const fetchNewsArticles = createAsyncThunk('fetchNewsArticles', async (sources) => {
 
    const response  = await fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=78df58fec805459caf086c63cbe2b3a9', {
 		method: "GET",
@@ -15,9 +15,9 @@ export const fetchNewsArticles = createAsyncThunk('fetchNewsArticles', async () 
         return response.json();
     }).then((data) => {
         return data.sources;
-    }).catch((err) => console.log(err));
-    console.log(response)
-    return response
+    })
+    console.log(response);
+    return response;
 });
 
 
@@ -29,7 +29,7 @@ isLoading: false,
 status:  'idle',
 };
 
-const newsArticleSlice = createSlice({
+export const newsArticleSlice = createSlice({
     name: 'newsArticle',
     initialState,
     reducers:{
@@ -51,7 +51,8 @@ const newsArticleSlice = createSlice({
         state.isLoading = 'loading'
         }).addCase(fetchNewsArticles.fulfilled,(state,action) =>{
             state.status ='success';
-           state.articles= [...state, action.payload];
+           state.articles= action.payload;
+           state.isLoading = false;
             // state.article = action.payload
         }).addCase(fetchNewsArticles.rejected, (state,action) =>{
             state.error = action.error.message;     
@@ -65,7 +66,7 @@ const newsArticleSlice = createSlice({
 export const {startGetNewsArticle, getNewsArticleSuccess, getNewsArticleFailure} = newsArticleSlice.actions;
 export default newsArticleSlice.reducer;
 
-export const selectArticles = (state) => state.newsArticles.articles;
+// export const selectArticles = (state) => state.newsArticles.articles;
 export const getNewsArticlesStatus = (state) => state.articles.status;
 export const getNewsArticleError = (state) => state.articles.error;
 
