@@ -42,8 +42,9 @@ function App() {
       </header>
       <main>
      <NewsArticle/>
-      <div>Business</div>
+      <div>
        <BusinessSection />
+       </div>
       <div>Technology</div>
 
 
@@ -53,18 +54,19 @@ function App() {
       
       
       </main>
-      
-      <footer>
+      <div className='footer-container'>
+      <footer className='app-footber'>
         Refreshed news
        <ul className='footer-list-el'>
-        <li>About us</li>
-        <li>Licensing</li>
-        <li>Advertise</li>
-        <li>Contact Us</li>
-        <li>Terms of Service</li>
-        <li>Privacy Policy</li>
+        <li className='app-footer-li-1'>About us</li>
+        <li className='app-footer-li-2'>Licensing</li>
+        <li className='app-footer-li-3'>Advertise</li>
+        <li className='app-footer-li-4'>Contact Us</li>
+        <li className='app-footer-li-5'>Terms of Service</li>
+        <li className='app-footer-li-6'>Privacy Policy</li>
        </ul>
       </footer>
+      </div>
       </ThemeProvider>
     </div>
   );
