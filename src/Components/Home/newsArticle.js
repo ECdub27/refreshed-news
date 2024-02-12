@@ -7,7 +7,7 @@ import LinearBuffer from '../../linearBuffer';
 
 const NewsArticle = () =>{ 
   
-  const selectedArticles = useSelector((state) => state.articles);
+  const selectedArticles = useSelector((state) => state.newsArticles.articles);
   const { articles, error, isLoading, status } = selectedArticles;
     const dispatch = useDispatch();
 

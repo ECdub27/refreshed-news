@@ -30,7 +30,7 @@ return () => {
 let bodyContent
 if (status === 'loading'){
  bodyContent = <div className='loader'>  <LinearBuffer /> </div>
-} else if (status === 'success'){
+} else if (status === 'successful'){
 let sortedArticles;
 
  sortedArticles = articles.slice().sort((a,b) => b.id -a.id)
