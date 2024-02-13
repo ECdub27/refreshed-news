@@ -5,7 +5,7 @@ import { newsapiKey } from "../api";
 
 
 export const fetchPoliticsArticles = createAsyncThunk('Politics Articles', async (sources) =>{
-    const response =  await fetch('https://newsapi.org/v2/everything?domains=techcrunch.com,thenextweb.com&apiKey=78df58fec805459caf086c63cbe2b3a9',{
+    const response =  await fetch('https://newsapi.org/v2/top-headlines?q=politics&apiKey=78df58fec805459caf086c63cbe2b3a9',{
    method: 'GET',
    headers:{ 
     'Authorization': newsapiKey,

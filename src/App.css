@@ -46,8 +46,17 @@ main{
       background-color: #282c34;}
   }
 
+ /* div styles */
 
-
+ .Business.Section.div{
+padding-top: 20px;
+ }
+ .Tech.Section.div{
+  padding-top: 20px;
+ }
+ .Poli.Section.div{
+  padding-top: 20px;
+ }
   /* Footer Styles */ 
 footer{
   display:flex;
