@@ -58,7 +58,7 @@ failPoliticsArticles(state){
         state.status = 'loading'
     }).addCase(fetchPoliticsArticles.fulfilled, (state,action) =>{
         state.isLoading = false;
-        state.action = action.payload;
+        state.politicsArticles = action.payload;
         state.status = 'idle';
     }).addCase(fetchPoliticsArticles.rejected, (state) =>{
      state.action.error = true;
@@ -71,3 +71,6 @@ export const {startPoliticsArticles, getPoliticsArticles,failPoliticsArticles} =
 export default politicsArticleSlice.reducer;
 
 // selector variables
+
+export const getPoliticsArticlesStatus = (state) => state.politicsNews.status;
+export const getPoliticsArticlesError = (state) => state.politicsNews.rejected;

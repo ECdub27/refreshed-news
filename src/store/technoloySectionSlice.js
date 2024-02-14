@@ -56,7 +56,7 @@ failTechArticles(state){
         state.status = 'loading'
     }).addCase(fetchTechArticles.fulfilled, (state,action) =>{
         state.isLoading = false;
-        state.action = action.payload;
+        state.techArticles = action.payload;
         state.status = 'idle';
     }).addCase(fetchTechArticles.rejected, (state,action) =>{
      state.error = action.error.message;
@@ -71,3 +71,6 @@ export default techArticleSlice.reducer;
 
 
 // selector vars
+
+export const getTechArticlesStatus = (state) =>  state.technologyNews.status;
+export const getTechArticlesError = (state) => state.technologyNews.error;
