@@ -8,9 +8,8 @@ import LinearBuffer from "../../linearBuffer";
 const TechnologySection = () => {
 
 const dispatch = useDispatch();
-const technologyArticles =  selectTechArticles;
+const technologyArticles =  useSelector(selectTechArticles);
 const {error, status, isLoading } = getTechArticlesStatus;
-
 
 
 
@@ -32,33 +31,21 @@ dispatch(fetchTechArticles());
 let bodyContent
 if (status === 'loading'  || isLoading ? true: false){
  bodyContent = <div className='loader'>  <LinearBuffer /> </div>
-} else if (status === 'idle'){
-let sortedArticles;
-
- sortedArticles = technologyArticles.slice().sort((a,b) => b.id -a.id)
+} 
 
 
-    bodyContent = sortedArticles.map((article) => (
-        <div className='card' key= {article.id}>
-<ul key={article.id}>
-                <li className='list-item'key={article.id}>{article.name} <p>{article.description}</p>
-                <p> {article.url}</p>
-                </li>
-                
-
-            </ul>
-           
-        </div>
-    ))
-} else {
-    bodyContent = <div>{error}</div>
-}
 
 return (
     <div>
        <h2>Technology</h2>
-       
-       {bodyContent}
+       {Object.values(technologyArticles)?.map((techArticle) =>(
+        <div>
+        <p key={techArticle.id}>{techArticle.title}</p>
+        <ol>
+            <li>{techArticle.description}</li>
+        </ol>
+        </div>
+       ))}
     </div>
    
 )

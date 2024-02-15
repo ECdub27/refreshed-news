@@ -9,7 +9,7 @@ reducer:{
     businessNews: businessNewsSliceReducer,
     technologyNews: techArticleSliceReducer,
     politicsNews: politicsArticleSliceReducer
-}
+},
 
 })
 

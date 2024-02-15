@@ -14,10 +14,10 @@ export const fetchNewsArticles = createAsyncThunk('fetchNewsArticles', async () 
 	}).then((response) => {
         return response.json();
     }).then((data) => {
-        return data.sources;
+        return data
     })
-    console.log(response);
-    return response;
+    console.log(response)
+    return response
 });
 
 
@@ -53,12 +53,9 @@ export const newsArticleSlice = createSlice({
         builder.addCase(fetchNewsArticles.pending,(state) =>{
         state.isLoading = 'loading'
         }).addCase(fetchNewsArticles.fulfilled,(state,action) =>{
-            const newTopHeadlineArticles = []
-            action.payload.forEach(article =>{
-                newTopHeadlineArticles[article.id] = article
-            })
+           
             state.isLoading = false;
-            state.articles = newTopHeadlineArticles
+            state.articles = action.payload
             state.status = 'idle';
             // state.article = action.payload
         }).addCase(fetchNewsArticles.rejected, (state,action) =>{
@@ -71,14 +68,10 @@ export const newsArticleSlice = createSlice({
 
 
 
-export const selectTopHeadlineArticles = createSelector(
-    state => state.articles, // output selector that recieves all the input results as args
-    articles => articles.map(article => article.id)
-)
 export const {startGetNewsArticle, getNewsArticleSuccess, getNewsArticleFailure} = newsArticleSlice.actions;
 export default newsArticleSlice.reducer;
 
 // export const selectArticles = (state) => state.newsArticles.articles;
 export const getNewsArticlesStatus = (state) => state.articles.status;
 export const getNewsArticleError = (state) => state.articles.error;
-
+export const selectedTopHeadlineArticles = (state) => state.newsArticles.articles

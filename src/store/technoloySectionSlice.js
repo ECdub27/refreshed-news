@@ -14,10 +14,10 @@ export const fetchTechArticles = createAsyncThunk('TechArticles', async (sources
    }).then((response) => {
     return response.json()
    }).then((data) =>{
-    return data.sources;
+    return data
    })
-   console.log(response);
-   return response;
+   console.log(response)
+   return response
    
 });
 
@@ -32,7 +32,7 @@ const initialState = {
 
 
 export const techArticleSlice = createSlice({
-    name: 'Tech Article',
+    name: 'technologyNews',
 initialState,
  reducers: {
 startTechArticles(state){
@@ -40,7 +40,7 @@ startTechArticles(state){
     state.error = false
 },
 getTechArticles(state,action){
-    state.techArticles = action.payload.techArticles;
+    state.techArticles = action.payload;
     state.isLoading = false;
     state.status ='Success'
 },
@@ -71,6 +71,6 @@ export default techArticleSlice.reducer;
 
 
 // selector vars
-export const selectTechArticles = (state) => state.technologyNews.techArticles;
+export const selectTechArticles = (state) => state.technologyNews.techArticles
 export const getTechArticlesStatus = (state) =>  state.technologyNews.status;
 export const getTechArticlesError = (state) => state.technologyNews.error;

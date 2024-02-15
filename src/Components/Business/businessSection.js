@@ -1,5 +1,6 @@
 
-import {fetchBusinessNews, getBusinessNewsStatus} from '../../store/businessSectionSlice';
+import {fetchBusinessNews, getBusinessNewsStatus, getBusinessNewsError,
+} from '../../store/businessSectionSlice';
 import {useSelector, useDispatch} from 'react-redux';
 import { useEffect } from 'react';
 import LinearBuffer from '../../linearBuffer';
@@ -9,45 +10,33 @@ import { selectBusArticles } from '../../store/businessSectionSlice';
 const BusinessSection = () =>{
 
 const dispatch = useDispatch();
- const businessArticles = useSelector(selectBusArticles);
- const {articles,status, error, isLoading} = businessArticles
- const businessNewsStatus = useSelector(getBusinessNewsStatus);
-
-
+// const {articles, isLoading} = useSelector((state) => state.businessNews.articles)
+ const articles = selectBusArticles
+console.log(useSelector)
 
 
 useEffect(() =>{
-    let isMounted = true
-if(status === 'idle'){
     dispatch(fetchBusinessNews())
-}
-return () => {
-    isMounted = false
-}
-},[status, dispatch])
+},[dispatch])
 // promise ismapped out; lets use no referrer might need Router
 
-if (status === 'loading' || isLoading ? true: false){
-    let bodyContent;
- bodyContent = <div className='loader'>  <LinearBuffer /> </div>
-} 
-else {
-    let bodyContent
-    bodyContent = <div>{error}</div>
-}
+if(getBusinessNewsStatus === 'loading'){
+    return <p>Hold Up I working on it! <LinearBuffer/></p>
+ } 
 
 
-const renderedBusinessArticles =  businessArticles.map((businessArticle) => {
-    return <ul key={businessArticle.id}>
-        <li key={businessArticle.id}>
-            {articles.description}</li>
-    </ul>
-})
 return (
     <div>
        <h2>Business News</h2>
        
-       {renderedBusinessArticles}
+       {Object.values(articles)?.map((busArticle) =>(
+        <div>
+        <p key={busArticle.id}>{busArticle.title}</p>
+        <ol>
+            <li>{busArticle.description}</li>
+        </ol>
+        </div>
+       ))}
     </div>
    
 )

@@ -1,5 +1,5 @@
 import { useEffect} from 'react';
-import { fetchNewsArticles, selectTopHeadlineArticles,getNewsArticlesStatus, getNewsArticleError} from '../../store/newsArticleSlice';
+import { fetchNewsArticles, selectedTopHeadlineArticles,getNewsArticlesStatus, getNewsArticleError} from '../../store/newsArticleSlice';
 import {useDispatch,useSelector} from 'react-redux';
 import LinearBuffer from '../../linearBuffer';
 
@@ -7,7 +7,7 @@ import LinearBuffer from '../../linearBuffer';
 
 const NewsArticle = () =>{ 
   
-  const selectedArticles = useSelector(selectTopHeadlineArticles);
+  const selectedArticles = useSelector(selectedTopHeadlineArticles);
 
   const dispatch = useDispatch();
 
@@ -58,9 +58,18 @@ bodyContent = sortedNewsArticles.map((article) => (
 return (
     <div>
        <h2>Top Headline News!!</h2>
-       {bodyContent}
+        { Object.values(selectedArticles)?.map((article) => (
+          <div>
+            <p key={article.id}>{article.title}</p>
+        <ol>
+            <li>{article.description}</li>
+        </ol>
+            </div>
+               
+       ))}
         
     </div>
+
 
 );
 

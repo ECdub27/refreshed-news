@@ -15,10 +15,10 @@ export const fetchPoliticsArticles = createAsyncThunk('Politics Articles', async
     }).then((response) => { 
         return response.json();
     }).then((data) => {
-        return data.sources
+        return data
     })
-   console.log(response);
-    return response;
+   console.log(response)
+    return response
     
 
 })
@@ -34,7 +34,7 @@ const initialState = {
 
 
 export const politicsArticleSlice = createSlice({
-    name: 'Politics Article',
+    name:'politics_News',
 initialState,
  reducers: {
 startPoliticsArticles(state){
@@ -42,9 +42,9 @@ startPoliticsArticles(state){
     state.error = false
 },
 getPoliticsArticles(state,action){
-    state.articles = action.payload.articles;
-    state.isLoading = false;
-    state.status ='Success'
+    state.isLoading = false
+    state.politicsArticles = action.payload;
+
 },
 failPoliticsArticles(state){
     state.isLoading  = false
@@ -71,6 +71,7 @@ export const {startPoliticsArticles, getPoliticsArticles,failPoliticsArticles} =
 export default politicsArticleSlice.reducer;
 
 // selector variables
+export const selectPollyArticles = (state) => state.politicsNews.politicsArticles
 
 export const getPoliticsArticlesStatus = (state) => state.politicsNews.status;
 export const getPoliticsArticlesError = (state) => state.politicsNews.rejected;
