@@ -23,6 +23,15 @@ import { useDispatch } from 'react-redux';
 
 
 
+// sample post 
+{/*
+export const saveNewTodo = createAsyncThunk('todos/saveNewTodo', async text => {
+  const initialTodo = { text }
+  const response = await client.post('/fakeApi/todos', { todo: initialTodo })
+  return response.todo
+})
+*/}
+
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,

@@ -26,7 +26,7 @@ const PoliticsSection = () => {
     let bodyContent
 if (status === 'loading' ||  isLoading ? true: false){
  bodyContent = <div className='loader'>  <LinearBuffer /> </div>
-} else if (status === 'successful'){
+} else if (status === 'idle'){
 let sortedArticles;
 
  sortedArticles = pollyArticles.slice().sort((a,b) => b.id -a.id)

@@ -22,16 +22,17 @@ dispatch(fetchTechArticles());
 
  return () =>{
     mounted = false;
+    console.log(technologyArticles)
  }
 
 
-},[status, dispatch]);
+},[status, technologyArticles, dispatch]);
 
 
 let bodyContent
 if (status === 'loading'  || isLoading ? true: false){
  bodyContent = <div className='loader'>  <LinearBuffer /> </div>
-} else if (status === 'successful'){
+} else if (status === 'idle'){
 let sortedArticles;
 
  sortedArticles = technologyArticles.slice().sort((a,b) => b.id -a.id)

@@ -1,5 +1,5 @@
 import { useEffect} from 'react';
-import { fetchNewsArticles } from '../../store/newsArticleSlice';
+import { fetchNewsArticles, selectTopHeadlineArticles,getNewsArticlesStatus, getNewsArticleError} from '../../store/newsArticleSlice';
 import {useDispatch,useSelector} from 'react-redux';
 import LinearBuffer from '../../linearBuffer';
 
@@ -7,9 +7,9 @@ import LinearBuffer from '../../linearBuffer';
 
 const NewsArticle = () =>{ 
   
-  const selectedArticles = useSelector((state) => state.newsArticles.articles);
-  const { articles, error, isLoading, status } = selectedArticles;
-    const dispatch = useDispatch();
+  const selectedArticles = useSelector(selectTopHeadlineArticles);
+
+  const dispatch = useDispatch();
 
    
 
@@ -19,21 +19,21 @@ const NewsArticle = () =>{
  useEffect(() =>{
 
   let mounted = true 
-  if(status === 'idle'){
+  if(getNewsArticlesStatus === 'idle'){
 dispatch(fetchNewsArticles())
   }
 return () => {
   mounted = false;
 }
-},[dispatch, status])
+},[dispatch])
 
 
 let bodyContent
-if (status === 'loading' ? isLoading : true){
+if (getNewsArticlesStatus === 'loading') {
  bodyContent = <div className='loader'>
   <LinearBuffer />
  </div>
-} else if (status === 'successful'){
+} else if (getNewsArticlesStatus === 'idle'){
   let sortedNewsArticles;
 
 sortedNewsArticles = selectedArticles.slice().sort((a,b) => b.id - a.id)
@@ -52,7 +52,7 @@ bodyContent = sortedNewsArticles.map((article) => (
 ))
 
 } else {
-  bodyContent = <div>{error}</div>
+  bodyContent = <div>{getNewsArticleError}</div>
 }
 
 return (

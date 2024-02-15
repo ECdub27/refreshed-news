@@ -1,9 +1,9 @@
-import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
+import {createSlice, createAsyncThunk,createSelector} from '@reduxjs/toolkit';
 import { getNewsArticle } from '../api';
 import { newsapiKey } from '../api';
 
 
-export const fetchNewsArticles = createAsyncThunk('fetchNewsArticles', async (sources) => {
+export const fetchNewsArticles = createAsyncThunk('fetchNewsArticles', async () => {
 
    const response  = await fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=78df58fec805459caf086c63cbe2b3a9', {
 		method: "GET",
@@ -38,8 +38,11 @@ export const newsArticleSlice = createSlice({
         state.error = false;
      },
      getNewsArticleSuccess(state,action){
-        state.isLoading = false;
-        state.articles = action.payload.articles;
+        const topHeadlinesById = action.payload
+        state.articles[topHeadlinesById ] = topHeadlinesById 
+        state.isLoading = false
+        state.articles = state.articles.push(action.payload)
+    
      },
      getNewsArticleFailure(state){
         state.isLoading = false; 
@@ -50,9 +53,13 @@ export const newsArticleSlice = createSlice({
         builder.addCase(fetchNewsArticles.pending,(state) =>{
         state.isLoading = 'loading'
         }).addCase(fetchNewsArticles.fulfilled,(state,action) =>{
-            state.status ='success';
-           state.articles= action.payload;
-           state.isLoading = false;
+            const newTopHeadlineArticles = []
+            action.payload.forEach(article =>{
+                newTopHeadlineArticles[article.id] = article
+            })
+            state.isLoading = false;
+            state.articles = newTopHeadlineArticles
+            state.status = 'idle';
             // state.article = action.payload
         }).addCase(fetchNewsArticles.rejected, (state,action) =>{
             state.error = action.error.message;     
@@ -63,6 +70,11 @@ export const newsArticleSlice = createSlice({
 }); 
 
 
+
+export const selectTopHeadlineArticles = createSelector(
+    state => state.articles, // output selector that recieves all the input results as args
+    articles => articles.map(article => article.id)
+)
 export const {startGetNewsArticle, getNewsArticleSuccess, getNewsArticleFailure} = newsArticleSlice.actions;
 export default newsArticleSlice.reducer;
 
