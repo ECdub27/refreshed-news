@@ -40,7 +40,7 @@ startTechArticles(state){
     state.error = false
 },
 getTechArticles(state,action){
-    state.articles = action.payload.articles;
+    state.techArticles = action.payload.techArticles;
     state.isLoading = false;
     state.status ='Success'
 },
@@ -71,6 +71,6 @@ export default techArticleSlice.reducer;
 
 
 // selector vars
-
+export const selectTechArticles = (state) => state.technologyNews.techArticles;
 export const getTechArticlesStatus = (state) =>  state.technologyNews.status;
 export const getTechArticlesError = (state) => state.technologyNews.error;

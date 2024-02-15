@@ -1,14 +1,15 @@
-import { UseDispatch, useDispatch, useSelector } from "react-redux";
-import { fetchTechArticles } from "../../store/technoloySectionSlice";
+import {  useDispatch, useSelector } from "react-redux";
+import { fetchTechArticles, selectTechArticles , getTechArticlesStatus} from "../../store/technoloySectionSlice";
 import { useEffect } from "react";
 import LinearBuffer from "../../linearBuffer";
 
 
 
 const TechnologySection = () => {
+
 const dispatch = useDispatch();
-const technologyArticles =  useSelector((state) => state.technologyNews);
-const {techArticles, error, status, isLoading } = techArticles;
+const technologyArticles =  selectTechArticles;
+const {error, status, isLoading } = getTechArticlesStatus;
 
 
 
