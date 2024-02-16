@@ -25,7 +25,7 @@ dispatch(fetchNewsArticles())
 return () => {
   mounted = false;
 }
-},[dispatch])
+},[])
 
 
 let bodyContent

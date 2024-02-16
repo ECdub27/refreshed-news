@@ -17,7 +17,7 @@ console.log(useSelector)
 
 useEffect(() =>{
     dispatch(fetchBusinessNews())
-},[dispatch])
+},[])
 // promise ismapped out; lets use no referrer might need Router
 
 if(getBusinessNewsStatus === 'loading'){

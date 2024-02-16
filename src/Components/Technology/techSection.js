@@ -21,11 +21,11 @@ dispatch(fetchTechArticles());
 
  return () =>{
     mounted = false;
-    console.log(technologyArticles)
+   
  }
 
 
-},[status, technologyArticles, dispatch]);
+},[]);
 
 
 let bodyContent
