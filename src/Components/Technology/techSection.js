@@ -9,7 +9,7 @@ const TechnologySection = () => {
 
 const dispatch = useDispatch();
 const technologyArticles =  useSelector(selectTechArticles);
-const {error, status, isLoading } = getTechArticlesStatus;
+const {status, isLoading } = getTechArticlesStatus;
 
 
 
@@ -33,7 +33,9 @@ if (status === 'loading'  || isLoading ? true: false){
  bodyContent = <div className='loader'>  <LinearBuffer /> </div>
 } 
 
-
+let techContent = Object.values(technologyArticles).map(({title, description, url})  =>{
+    return JSON.stringify(title, description,url);
+})
 
 return (
     <div>

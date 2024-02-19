@@ -29,16 +29,24 @@ const PoliticsSection = () => {
 if ( fetchPoliticsArticles === 'loading'){
     return <p>Hold Up I working on it! <LinearBuffer/></p>
 }
-let bodyContent= Object.values(politicsArticles).map(({title, description, url}) =>{
-    return {title, description, url} 
+
+
+let bodyContent= Object.values(politicsArticles.articles).map(({title, description, url}) =>{
+    return JSON.stringify(title, description,url);
 })
 
 return (
     <div>
        <h2>Politics</h2>
-       {bodyContent.title}
-       {bodyContent.description}
-       {bodyContent.title} 
+       
+       <p>{bodyContent.map((article, index) => (
+        <div key={index}>
+          <ul>
+            <li>{article}</li>
+            </ul>      
+            </div>
+       ))}</p>
+    
     
             
        

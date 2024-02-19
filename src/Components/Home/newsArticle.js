@@ -3,7 +3,7 @@ import { fetchNewsArticles, selectedTopHeadlineArticles,getNewsArticlesStatus, g
 import {useDispatch,useSelector} from 'react-redux';
 import LinearBuffer from '../../linearBuffer';
 
-
+// consolidate news apis here
 
 const NewsArticle = () =>{ 
   
@@ -19,9 +19,9 @@ const NewsArticle = () =>{
  useEffect(() =>{
 
   let mounted = true 
-  if(getNewsArticlesStatus === 'idle'){
+
 dispatch(fetchNewsArticles())
-  }
+
 return () => {
   mounted = false;
 }
@@ -33,41 +33,46 @@ if (getNewsArticlesStatus === 'loading') {
  bodyContent = <div className='loader'>
   <LinearBuffer />
  </div>
-} else if (getNewsArticlesStatus === 'idle'){
-  let sortedNewsArticles;
-
-sortedNewsArticles = selectedArticles.slice().sort((a,b) => b.id - a.id)
-
-bodyContent = sortedNewsArticles.map((article) => (
-  <div className='card' key= {article.id}>
-<ul key={article.id}>
-          <li className='list-item'key={article.id}>{article.name} <p>{article.description}</p>
-          <p> {article.url}</p>
-          </li>
-          
-
-      </ul>
-     
-  </div>
-))
-
 } else {
   bodyContent = <div>{getNewsArticleError}</div>
 }
 
+console.log(selectedArticles);
+
+let newsContent= Object.values(selectedArticles).map(({title, description, url}) =>{
+  return JSON.stringify(title, description,url);
+})
+
+console.log(selectedArticles)
 return (
     <div>
-       <h2>Top Headline News!!</h2>
-        { Object.values(selectedArticles)?.map((article) => (
-          <div>
-            <p key={article.id}>{article.title}</p>
-        <ol>
-            <li>{article.description}</li>
-        </ol>
+       <h2>Top Headline News</h2>
+       <p>{newsContent.map((article, index) => (
+        <div key={index}>
+          <ul>
+            <li>{article}</li>
+            </ul>      
             </div>
-               
-       ))}
-        
+       ))}</p>
+       
+       <main id="mainContent">
+      <div className="container-fluid">
+        <div className="row">
+          <div className='side-bar-style'>
+            side bar header
+            <div className="list-group list-group-flush border-bottom">
+              list item here
+              <li>
+
+              </li>
+            </div>
+          </div>
+          some type of detail here
+          
+        </div>
+      </div>
+      
+    </main>
     </div>
 
 

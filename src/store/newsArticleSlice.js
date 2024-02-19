@@ -5,7 +5,7 @@ import { newsapiKey } from '../api';
 
 export const fetchNewsArticles = createAsyncThunk('fetchNewsArticles', async () => {
 
-   const response  = await fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=78df58fec805459caf086c63cbe2b3a9', {
+   const response  = await fetch('https://newsapi.org/v2/everything?q=business&q=politics&q=technology&apiKey=78df58fec805459caf086c63cbe2b3a9', {
 		method: "GET",
 		headers: {
 			'Authorization': newsapiKey,
@@ -14,7 +14,7 @@ export const fetchNewsArticles = createAsyncThunk('fetchNewsArticles', async () 
 	}).then((response) => {
         return response.json();
     }).then((data) => {
-        return data.articles
+        return data
     })
     console.log(response)
     return response
@@ -38,11 +38,9 @@ export const newsArticleSlice = createSlice({
         state.error = false;
      },
      getNewsArticleSuccess(state,action){
-        const topHeadlinesById = action.payload
-        state.articles[topHeadlinesById ] = topHeadlinesById 
         state.isLoading = false
-        state.articles = state.articles.push(action.payload)
-    
+        state.articles = action.payload;
+
      },
      getNewsArticleFailure(state){
         state.isLoading = false; 

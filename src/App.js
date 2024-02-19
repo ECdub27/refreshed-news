@@ -4,12 +4,11 @@ import NavBar from './Components/NavBar/navBar';
 import HeroSlide from './Components/Header/hero';
 import {useState, useEffect} from 'react';
 import NewsArticle from './Components/Home/newsArticle';
-import BusinessSection from './Components/Business/businessSection';
-import TechnologySection from './Components/Technology/techSection';
-import PoliticsSection from './Components/Politics/politicsSection';
+import { useGetPokemonByNameQuery } from './store/newsApiSlice';
 // MUI themee provider
 import { ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material';
+import Footer from './Components/Footer/footer';
 
 
 
@@ -36,6 +35,8 @@ const theme = createTheme({
 function App() {
   // make nav bar sticky
 
+const {data, error, isLoading } = useGetPokemonByNameQuery('eevee')
+ 
   return (
     <div className="App">
     <ThemeProvider theme={theme}>
@@ -50,32 +51,34 @@ function App() {
 
      <div className="Business.Section.div">
      <div>
-        
-        <BusinessSection /> 
+        <h3>Whos that pokemon!!</h3>
+        {error ? (
+          <>Oh no, there was an error</>
+        ) : isLoading ? (
+          <>Loading...</>
+        ) : data ? (
+          <>
+          <p>{data.species.name}</p> 
+          <img src={data.sprites.front_shiny} alt={data.species.name}/>  
+          </>
+        ) : null
+      }
         
          </div>
      </div>
      <div className='Technology.Section.div'>
-        <TechnologySection />
+        
      </div>
      <div className='Politics.Section.div'>
-   <PoliticsSection /> 
+   
      </div>
 
       <div className='footer-container'>
-      <footer className='app-footber'>
         Refreshed news
-       <ul className='footer-list-el'>
-        <li className='app-footer-li-1'>About us</li>
-        <li className='app-footer-li-2'>Licensing</li>
-        <li className='app-footer-li-3'>Advertise</li>
-        <li className='app-footer-li-4'>Contact Us</li>
-        <li className='app-footer-li-5'>Terms of Service</li>
-        <li className='app-footer-li-6'>Privacy Policy</li>
-       </ul>
-      </footer>
+       <Footer />
       </div>
       </ThemeProvider>
+      eb Template Studio: Deploy Web App
     </div>
   );
 }
