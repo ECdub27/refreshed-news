@@ -14,7 +14,7 @@ export const fetchNewsArticles = createAsyncThunk('fetchNewsArticles', async () 
 	}).then((response) => {
         return response.json();
     }).then((data) => {
-        return data
+        return data.articles
     })
     console.log(response)
     return response

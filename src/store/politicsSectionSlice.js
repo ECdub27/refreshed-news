@@ -17,7 +17,7 @@ export const fetchPoliticsArticles = createAsyncThunk('Politics Articles', async
     }).then((data) => {
         return data
     })
-   console.log(response)
+   console.log(response);
     return response
     
 
