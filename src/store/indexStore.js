@@ -3,29 +3,22 @@ import newsArticleReducer from './newsArticleSlice';
 import businessNewsSliceReducer from './businessSectionSlice';
 import techArticleSliceReducer from './technoloySectionSlice';
 import politicsArticleSliceReducer from './politicsSectionSlice';
-import { pokemonApi } from './newsApiSlice';
+import {  apiSlice, pokemonApi } from './newsApiSlice';
 
-const rootReducer = combineReducers({
-    [pokemonApi.reducerPath]: pokemonApi.reducer,
+
+
+
+const store = configureStore({
+reducer: {
+    [apiSlice.reducerPath]: apiSlice.reducer,
     newsArticles: newsArticleReducer,
     businessNews: businessNewsSliceReducer,
     technologyNews: techArticleSliceReducer,
     politicsNews: politicsArticleSliceReducer,
     
-})
-
-
-const store = configureStore({
-reducer: {
-    newsArticles: newsArticleReducer,
-    businessNews: businessNewsSliceReducer,
-    technologyNews: techArticleSliceReducer,
-    politicsNews: politicsArticleSliceReducer,
-    [pokemonApi.reducerPath]: pokemonApi.reducer
-   
 },
 middleware: (getDefaultMiddleware) => 
-getDefaultMiddleware().concat(pokemonApi.middleware),
+getDefaultMiddleware().concat(apiSlice.middleware)
 })
 
 

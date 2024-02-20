@@ -1,5 +1,5 @@
 import {  useDispatch, useSelector } from "react-redux";
-import { fetchTechArticles, selectTechArticles , getTechArticlesStatus} from "../../store/technoloySectionSlice";
+import { useGetTechnologyArticlesQuery } from "../../store/newsApiSlice";
 import { useEffect } from "react";
 import LinearBuffer from "../../linearBuffer";
 
@@ -7,48 +7,40 @@ import LinearBuffer from "../../linearBuffer";
 
 const TechnologySection = () => {
 
-const dispatch = useDispatch();
-const technologyArticles =  useSelector(selectTechArticles);
-const {status, isLoading } = getTechArticlesStatus;
+
+const {data, isLoading,error } = useGetTechnologyArticlesQuery();
 
 
 
 
-useEffect(() =>{
- let mounted = true 
 
-dispatch(fetchTechArticles());
-
- return () =>{
-    mounted = false;
-   
- }
-
-
-},[]);
-
-
-let bodyContent
-if (status === 'loading'  || isLoading ? true: false){
- bodyContent = <div className='loader'>  <LinearBuffer /> </div>
-} 
-
-let techContent = Object.values(technologyArticles).map(({title, description, url})  =>{
-    return JSON.stringify(title, description,url);
-})
 
 return (
-    <div>
-       <h2>Technology</h2>
-       {Object.values(technologyArticles)?.map((techArticle) =>(
+    
         <div>
-        <p key={techArticle.id}>{techArticle.title}</p>
-        <ol>
-            <li>{techArticle.description}</li>
-        </ol>
+        <h2>Technology</h2>
+        {error ? (
+               <>Oh no, there was an error</>
+             ) : isLoading ? (
+               <>Loading... <LinearBuffer /> </>
+             ) : data ? (
+              
+               <>
+               {data.articles.map((article, index) => (
+                 <div key={index}>
+                   <li>
+                       <p>{article.title}</p>
+                  <p>{article.name}</p> 
+                  <p>{article.description}</p>
+                 <a  rel='noreferrer'href={article.url} target='_blank' alt='business news sources' >{article.url}</a>
+                 <img src={article.urlToImage} alt='news article flick'/>
+                 </li>
+                 </div>
+               ))} 
+               </>
+             ) : null}
         </div>
-       ))}
-    </div>
+           
    
 )
 

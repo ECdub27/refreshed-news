@@ -1,61 +1,38 @@
-import { useEffect} from 'react';
-import { fetchNewsArticles, selectedTopHeadlineArticles,getNewsArticlesStatus, getNewsArticleError} from '../../store/newsArticleSlice';
 import {useDispatch,useSelector} from 'react-redux';
 import LinearBuffer from '../../linearBuffer';
-
+import { useGetAllArticlesQuery, useGetBusinessArticlesQuery} from '../../store/newsApiSlice'
 // consolidate news apis here
 
 const NewsArticle = () =>{ 
   
-  const selectedArticles = useSelector(selectedTopHeadlineArticles);
+ const {data, error, isLoading} = useGetBusinessArticlesQuery();
 
   const dispatch = useDispatch();
-
    
+  
+// one fix is JSON.stringify(data)
 
-
-
-
- useEffect(() =>{
-
-  let mounted = true 
-
-dispatch(fetchNewsArticles())
-
-return () => {
-  mounted = false;
-}
-},[])
-
-
-let bodyContent
-if (getNewsArticlesStatus === 'loading') {
- bodyContent = <div className='loader'>
-  <LinearBuffer />
- </div>
-} else {
-  bodyContent = <div>{getNewsArticleError}</div>
-}
-
-console.log(selectedArticles);
-
-let newsContent= Object.values(selectedArticles).map(({title, description, url}) =>{
-  return JSON.stringify(title, description,url);
-})
-
-console.log(selectedArticles)
 return (
     <div>
-       <h2>Top Headline News</h2>
-       <p>{newsContent.map((article, index) => (
-        <div key={index}>
-          <ul>
-            <li>{article}</li>
-            </ul>      
-            </div>
-       ))}</p>
-       
        <main id="mainContent">
+        
+         <h3>Business Sources </h3>
+         {error ? (
+        <>Oh no, there was an error</>
+      ) : isLoading ? (
+        <>Loading... <LinearBuffer /> </>
+      ) : data ? (
+       
+        <>
+        {data.sources.map((article, index) => (
+          <div key={index}>
+           <p>{article.name}</p> 
+           <p>{article.description}</p>
+          <a  rel='noreferrer'href={article.url} target='_blank' alt='business news sources' >{article.url}</a>
+          </div>
+        ))} 
+        </>
+      ) : null}
       <div className="container-fluid">
         <div className="row">
           <div className='side-bar-style'>

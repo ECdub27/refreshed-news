@@ -57,3 +57,4 @@ src/store/businessSectionSlice.js
 src/store/politicsSectionSlice.js
 src/store/newsArticleSlice.js
 src/store/technologySectionSlice.js
+src/store/newsApiSlice.js

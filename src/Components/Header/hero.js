@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
+import TopHeadlines from './topHeadlines';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MobileStepper from '@mui/material/MobileStepper';
@@ -54,6 +55,8 @@ function HeroSlide() {
   };
 
   return (
+    <div>
+      <TopHeadlines />
     <Box sx={{ maxWidth: 500, flexGrow: 1, marginTop: 10 }}>
       <Paper
         square
@@ -123,6 +126,7 @@ function HeroSlide() {
         }
       />
     </Box>
+    </div>
   );
 }
 
