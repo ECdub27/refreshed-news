@@ -1,52 +1,45 @@
-import { useEffect,useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import LinearBuffer from "../../linearBuffer";
-import { fetchPoliticsArticles, selectPollyArticles, getPoliticsArticlesStatus } from "../../store/politicsSectionSlice";
 
+import LinearBuffer from "../../linearBuffer";
+import { useGetPoliticsArticlesQuery } from "../../store/newsApiSlice";
 
 
 
 
 const PoliticsSection = () => {
-  const dispatch = useDispatch();
-  const [data, setData] = useState([]);
-  // const {politicsArticles, status, isLoading} = useSelector((state) => state.politicsNews.politicsArticles)
-  const politicsArticles = useSelector(selectPollyArticles);
+   const {data, isLoading, error} = useGetPoliticsArticlesQuery();
+ 
   
-  
-    useEffect(() =>{
     
-    dispatch(fetchPoliticsArticles())
-
-    return () => {
-   
-     
-    }
-    },[])
 
 
     
-if ( fetchPoliticsArticles === 'loading'){
-    return <p>Hold Up I working on it! <LinearBuffer/></p>
-}
 
-
-let bodyContent= Object.values(politicsArticles.articles).map(({title, description, url}) =>{
-    return JSON.stringify(title, description,url);
-})
 
 return (
     <div>
        <h2>Politics</h2>
        
-       <p>{bodyContent.map((article, index) => (
-        <div key={index}>
-          <ul>
-            <li>{article}</li>
-            </ul>      
-            </div>
-       ))}</p>
-    
+       
+       {error ? (
+               <>Oh no, there was an error</>
+             ) : isLoading ? (
+               <>Loading... <LinearBuffer /> </>
+             ) : data ? (
+              
+               <>
+               {data.articles.map((article, index) => (
+                 <div key={index}>
+                   <li>
+                       <p>{article.title}</p>
+                  <p>{article.name}</p> 
+                  <p>{article.description}</p>
+                 <a  rel='noreferrer'href={article.url} target='_blank' alt='business news sources' >{article.url}</a>
+                 <img src={article.urlToImage} alt='news article flick'/>
+                 </li>
+                 </div>
+               ))} 
+               </>
+             ) : null}
     
             
        

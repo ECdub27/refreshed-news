@@ -9,7 +9,8 @@ import { useGetPokemonByNameQuery } from './store/newsApiSlice';
 import { ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material';
 import Footer from './Components/Footer/footer';
-
+import TechnologySection from './Components/Technology/techSection';
+import PoliticsSection from './Components/Politics/politicsSection';
 
 
 
@@ -40,15 +41,15 @@ const {data, error, isLoading } = useGetPokemonByNameQuery('eevee')
   return (
     <div className="App">
     <ThemeProvider theme={theme}>
-      <NavBar className='app-nav-bar' /> 
+      <NavBar className='app-nav-bar' positon='sticky' /> 
       <header className="App-header">
         <HeroSlide />
       </header>
-
+      
       
       <main>
      <NewsArticle/>
-    </main>
+    
 
      <div className="Business.Section.div">
      <div>
@@ -68,18 +69,18 @@ const {data, error, isLoading } = useGetPokemonByNameQuery('eevee')
          </div>
      </div>
      <div className='Technology.Section.div'>
-        
+        <TechnologySection />
      </div>
      <div className='Politics.Section.div'>
-   
+      <PoliticsSection />
      </div>
-
+  </main>
       <div className='footer-container'>
         Refreshed news
        <Footer />
       </div>
       </ThemeProvider>
-      eb Template Studio: Deploy Web App
+      
     </div>
   );
 }

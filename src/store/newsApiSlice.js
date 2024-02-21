@@ -22,10 +22,10 @@ export const apiSlice = createApi({
             query: () => 'newsapi.org/v2/top-headlines?country=us&apiKey=78df58fec805459caf086c63cbe2b3a9'
         }),
         GetPoliticsArticles: builder.query({
-            query: () => 'newsapi.org/v2/top-headlines?q=politics&apiKey=78df58fec805459caf086c63cbe2b3a9'
+            query: () => 'newsapi.org/v2/top-headlines?q=politics&pageSize=20&apiKey=78df58fec805459caf086c63cbe2b3a9'
         }),
         GetTechnologyArticles: builder.query({
-            query: () => 'https://newsapi.org/v2/everything?domains=techcrunch.com,thenextweb.com&apiKey=78df58fec805459caf086c63cbe2b3a9'
+            query: () => 'newsapi.org/v2/everything?domains=techcrunch.com,thenextweb.com&pageSize=20&apiKey=78df58fec805459caf086c63cbe2b3a9'
         })
         })
     })

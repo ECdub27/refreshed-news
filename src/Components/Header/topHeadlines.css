@@ -1,0 +1,21 @@
+
+
+.list-item-topHeadlines{
+    display: inline-block;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    padding-left: 2%;
+}
+img{
+    align-content: center;
+    display: flex;
+}
+.topheadlines-name, .topheadlines-description{
+    margin: 0;
+    display:inline;
+   
+   }
+.All-news-img{
+    width: 30%
+}
