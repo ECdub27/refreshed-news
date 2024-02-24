@@ -2,6 +2,10 @@ import {useGetAllArticlesQuery} from '../../store/newsApiSlice';
 import LinearBuffer from '../../linearBuffer';
 import './topHeadlines.css';
 import Container from '@mui/material/Container';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
+import  Link  from '@mui/material/Link';
 const TopHeadlines = () =>{
 
     const {data, isLoading, error } = useGetAllArticlesQuery();
@@ -10,7 +14,7 @@ const TopHeadlines = () =>{
 
     return (
  <div>
- <h2>Here are your top headlines</h2>
+ <h2>Here Are Your Top Headlines</h2>
  {error ? (
         <>Oh no, there was an error</>
       ) : isLoading ? (
@@ -18,20 +22,23 @@ const TopHeadlines = () =>{
       ) : data ? (
        
         <>
+        <ImageList sx={{width: 900, height: 700}}>
         {data.articles.map((article, index) => (
+          <ImageListItem key={article.urlToImage}> 
+           <img className='All-news-img'src={article.urlToImage} alt={article.title}/>
+           <ImageListItemBar title={article.title}
+           subtitle={article.description & article.url }
+          
+           position="below"/>
+            
           <div className='headlines-div'key={index}>
-            <li className='list-item-topHeadlines'>
-              <Container>
-                <p>{article.title}</p>
-           <p className='topheadlines-name'>{article.name}</p> 
-           <p className='topheadlines-description'>{article.description}</p>
-          <a  rel='noreferrer'href={article.url} target='_blank' alt='business news sources' >{article.url}</a>
-          <img className='All-news-img'src={article.urlToImage} alt='news article flick'/>
-          </Container>
-          </li>
+           
+          
           
           </div>
+          </ImageListItem>
         ))} 
+        </ImageList>
         </>
       ) : null}
  </div>

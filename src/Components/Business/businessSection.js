@@ -6,8 +6,18 @@ import { useEffect } from 'react';
 import LinearBuffer from '../../linearBuffer';
 import './businessSection.css';
 import { selectBusArticles } from '../../store/businessSectionSlice';
-
+import  Stack  from '@mui/material/Stack';
+import Paper from '@mui/material/Paper';
+import { styled } from '@mui/material/styles';
+import Divider from '@mui/material/Divider';
 const BusinessSection = () =>{
+    const Item = styled(Paper)(({ theme }) => ({
+        backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+        ...theme.typography.body2,
+        padding: theme.spacing(1),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+      }));
 
 const dispatch = useDispatch();
 // const {articles, isLoading} = useSelector((state) => state.businessNews.articles)
@@ -30,13 +40,19 @@ return (
        <h2>Business News</h2>
        
        {Object.values(articles)?.map((busArticle) =>(
+        <Stack
+        direction='row'
+        divider={<Divider orientation='vertical' flexItem />}
+        spacing={2}>
         <div>
-        <p key={busArticle.id}>{busArticle.title}</p>
+       <Item> <p key={busArticle.id}>{busArticle.title}</p></Item>
         <ol>
-            <li>{busArticle.description}</li>
+            <Item><li>{busArticle.description}</li></Item>
         </ol>
         </div>
+        </Stack>
        ))}
+       
     </div>
    
 )

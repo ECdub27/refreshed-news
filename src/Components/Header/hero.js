@@ -56,7 +56,7 @@ function HeroSlide() {
 
   return (
     <div>
-      <TopHeadlines />
+     
     <Box sx={{ maxWidth: 500, flexGrow: 1, marginTop: 10 }}>
       <Paper
         square
@@ -126,6 +126,7 @@ function HeroSlide() {
         }
       />
     </Box>
+    <TopHeadlines />
     </div>
   );
 }
