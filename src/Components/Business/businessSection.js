@@ -10,6 +10,9 @@ import  Stack  from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import Divider from '@mui/material/Divider';
+import  Typography  from '@mui/material/Typography';
+
+
 const BusinessSection = () =>{
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -41,14 +44,19 @@ return (
        
        {Object.values(articles)?.map((busArticle) =>(
         <Stack
-        direction='row'
+        direction='column'
         divider={<Divider orientation='vertical' flexItem />}
-        spacing={2}>
+        spacing={0}
+        justifyContent="space-around"
+        alignContent="flex-start"
+        paddingLeft={2}>
         <div>
+            <Typography variant='subtitle1' component="caption">
        <Item> <p key={busArticle.id}>{busArticle.title}</p></Item>
         <ol>
             <Item><li>{busArticle.description}</li></Item>
         </ol>
+        </Typography>
         </div>
         </Stack>
        ))}

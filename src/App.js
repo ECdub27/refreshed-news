@@ -8,6 +8,9 @@ import { useGetPokemonByNameQuery } from './store/newsApiSlice';
 // MUI themee provider
 import { ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material';
+import Container from '@mui/material/Container';
+import  Box  from "@mui/material/Box";
+
 import Footer from './Components/Footer/footer';
 import TechnologySection from './Components/Technology/techSection';
 import PoliticsSection from './Components/Politics/politicsSection';
@@ -69,7 +72,9 @@ const {data, error, isLoading } = useGetPokemonByNameQuery('eevee')
          </div>
      </div>
      <div className='Technology.Section.div'>
+      <Container>
         <TechnologySection />
+        </Container>
      </div>
      <div className='Politics.Section.div'>
       <PoliticsSection />
