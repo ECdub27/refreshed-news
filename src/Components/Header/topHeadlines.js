@@ -27,7 +27,7 @@ const TopHeadlines = () =>{
           <ImageListItem key={article.urlToImage}> 
           <Container > 
            <img className='All-news-img'src={article.urlToImage} alt={article.title}/>
-           <Typography  sx={{textAlign: 'center'}}fontFamily="League Spartan">
+           <Typography  sx={{alignContent: 'center'}}fontFamily="League Spartan">
            <ImageListItemBar title={article.title}
            
            subtitle={article.description & article.url }

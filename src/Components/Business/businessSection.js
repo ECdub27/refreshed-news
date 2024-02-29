@@ -11,7 +11,7 @@ import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import Divider from '@mui/material/Divider';
 import  Typography  from '@mui/material/Typography';
-
+import Box from '@mui/material/Box';
 
 const BusinessSection = () =>{
     const Item = styled(Paper)(({ theme }) => ({
@@ -39,26 +39,22 @@ if(getBusinessNewsStatus === 'loading'){
 
 
 return (
-    <div>
+    <div className='business-section-div'>
        <h2>Business News</h2>
        
        {Object.values(articles)?.map((busArticle) =>(
-        <Stack
-        direction='column'
-        divider={<Divider orientation='vertical' flexItem />}
-        spacing={0}
-        justifyContent="space-around"
-        alignContent="flex-start"
-        paddingLeft={2}>
-        <div>
-            <Typography variant='subtitle1' component="caption">
-       <Item> <p key={busArticle.id}>{busArticle.title}</p></Item>
-        <ol>
-            <Item><li>{busArticle.description}</li></Item>
+        
+        <div  className='card'>
+        <p className='article-title' key={busArticle.id}>{busArticle.title}</p>
+    
+        <ol className='unordered-list'>
+           
+     <li className='business-description'>{busArticle.description}</li>
+           
         </ol>
-        </Typography>
+        
         </div>
-        </Stack>
+        
        ))}
        
     </div>
