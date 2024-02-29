@@ -6,12 +6,8 @@ import { useEffect } from 'react';
 import LinearBuffer from '../../linearBuffer';
 import './businessSection.css';
 import { selectBusArticles } from '../../store/businessSectionSlice';
-import  Stack  from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
-import Divider from '@mui/material/Divider';
-import  Typography  from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 
 const BusinessSection = () =>{
     const Item = styled(Paper)(({ theme }) => ({
@@ -40,7 +36,7 @@ if(getBusinessNewsStatus === 'loading'){
 
 return (
     <div className='business-section-div'>
-       <h2>Business News</h2>
+       <h2 className='Business-h2'>Business News</h2>
        
        {Object.values(articles)?.map((busArticle) =>(
         

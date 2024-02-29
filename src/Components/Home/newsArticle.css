@@ -1,13 +1,23 @@
 .business-section-div{
     background-color: #282c34;
-    color: #FBFFF1
+    color: black;
 }
-
-
+a{
+color: #F6C5AF;
+text-decoration: underline;
+text-decoration-color: #DDF8E8;
+}
+#mainContent{
+    background-color: #282c34;
+    font-family: 'League Spartan';
+    color: #E0607E;
+}
 .list-item{
-color: #FBFFF1;
+color: black;
 }
-
+h2{
+    color: #E0607E;
+}
 .card{
     width: 480px;
     padding: 20px;
@@ -18,7 +28,7 @@ color: #FBFFF1;
     grid-column: auto;
     justify-items: start;
     word-break: break-all;
-    font-size: 12px;
+    font-size: 16px;
     
 }
 

@@ -10,12 +10,11 @@ import { ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material';
 import Container from '@mui/material/Container';
 import  Box  from "@mui/material/Box";
-
 import Footer from './Components/Footer/footer';
 import TechnologySection from './Components/Technology/techSection';
 import PoliticsSection from './Components/Politics/politicsSection';
 
-
+// see if you can get business sources to the right sidebar 
 
 const theme = createTheme({
   palette: {
@@ -46,9 +45,9 @@ const {data, error, isLoading } = useGetPokemonByNameQuery('eevee')
     <ThemeProvider theme={theme}>
       <NavBar className='app-nav-bar' positon='sticky' /> 
       <header className="App-header">
-        <HeroSlide />
+       cool header here
       </header>
-      
+     <HeroSlide />
       
       <main>
      <NewsArticle/>

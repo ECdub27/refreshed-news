@@ -6,6 +6,7 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import  Typography  from '@mui/material/Typography';
+
 const TopHeadlines = () =>{
 
     const {data, isLoading, error } = useGetAllArticlesQuery();
@@ -22,17 +23,20 @@ const TopHeadlines = () =>{
       ) : data ? (
        
         <>
-        <ImageList sx={{width: 900, height: 700}}>
+        <ImageList sx={{width: 900, height: 700, padding:2}}>
         {data.articles.map((article, index) => (
           <ImageListItem key={article.urlToImage}> 
-          <Container > 
+          <Container> 
            <img className='All-news-img'src={article.urlToImage} alt={article.title}/>
-           <Typography  sx={{alignContent: 'center'}}fontFamily="League Spartan">
-           <ImageListItemBar title={article.title}
-           
+           <Typography  sx={{alignContent: 'center'}}fontFamily="League Spartan"
+           color='#E0607E'>
+
+           <ImageListItemBar cols={3} rowHeight={120} 
+           title={article.title}
            subtitle={article.description & article.url }
-           
-           position="below"/>
+           position="below"
+           />
+           <a rel='noreferrer' href={article.urlToImage} alt='article url'><a href={article.url} alt='article url'> {article.url} </a></a>
            </Typography>
             </Container>
           <div className='headlines-div'key={index}>

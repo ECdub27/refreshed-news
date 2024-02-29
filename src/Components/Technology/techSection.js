@@ -1,7 +1,13 @@
 import {  useDispatch, useSelector } from "react-redux";
 import { useGetTechnologyArticlesQuery } from "../../store/newsApiSlice";
 import { useEffect } from "react";
+import './TechnologySection.css';
 import LinearBuffer from "../../linearBuffer";
+import Container from '@mui/material/Container';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
+import  Typography  from '@mui/material/Typography';
 
 const TechnologySection = () => {
 
@@ -24,21 +30,25 @@ return (
              ) : data ? (
               
                <>
+               <ImageList sx={{width: 900, height: 700, padding:2}} >
                {data.articles.map((article, index) => (
-                
-                 <div key={index}>
+                <ImageListItem className='list-item-techHeadlines' key={article.urlToImage}> 
+                <Container> 
+                <img className='tech-news-art'src={article.urlToImage} alt='news article flick'/>
+                <Typography  sx={{alignContent: 'center'}}fontFamily="League Spartan"
+           color='#E0607E'>
                  
-                   <li>
-                       <p>{article.title}</p>
-                  <p>{article.name}</p> 
-                  <p>{article.description}</p>
-                 <a  rel='noreferrer'href={article.url} target='_blank' alt='business news sources' >{article.url}</a>
-                 <img src={article.urlToImage} alt='news article flick'/>
-                 </li>
-                 
-                 </div>
-                 
+                 <ImageListItemBar className='techNews-name' cols={3} rowHeight={120} 
+           title={article.title}
+           subtitle={article.description & article.url }
+           position="below"
+           />
+           <a rel='noreferrer' href={article.urlToImage} alt='article url'><a href={article.url} alt='article url'> {article.url} </a></a>
+           </Typography>
+                 </Container>
+                 </ImageListItem>
                ))} 
+               </ImageList>
                </>
              ) : null}
         </div>
