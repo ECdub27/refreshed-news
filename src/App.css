@@ -87,7 +87,32 @@ box-sizing: border-box;
   }
   
 
-  
+  .hero-image{
+    background-image: linear-gradient(
+      rgba(0,0,0,0.5),
+    rgba(0,0,0,0.5) 
+
+    ), url('/src/cityView.jpg') no-repeat 0 0;
+
+    height: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position: relative;
+}
+
+.hero-text{
+    text-align: center;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+.hero-title{
+
+}
   
 
   

@@ -5,6 +5,7 @@ import HeroSlide from './Components/Header/hero';
 import {useState, useEffect} from 'react';
 import NewsArticle from './Components/Home/newsArticle';
 import { useGetPokemonByNameQuery } from './store/newsApiSlice';
+import Button from '@mui/material/Button';
 // MUI themee provider
 import { ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material';
@@ -45,7 +46,13 @@ const {data, error, isLoading } = useGetPokemonByNameQuery('eevee')
     <ThemeProvider theme={theme}>
       <NavBar className='app-nav-bar' positon='sticky' /> 
       <header className="App-header">
-       cool header here
+      <div className='hero-image'>
+        <div className='hero-text'>
+         <h1 className='hero-title'>A Refreshed Look from the Norm</h1>
+         <p className='hero-p'>No Bias</p>
+         <Button>Jump to your Favorite Section</Button>
+        </div>
+      </div>
       </header>
      <HeroSlide />
       
