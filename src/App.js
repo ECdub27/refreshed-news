@@ -10,6 +10,7 @@ import Button from '@mui/material/Button';
 import { ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material';
 import Container from '@mui/material/Container';
+import Divider from '@mui/material/Divider';
 import  Box  from "@mui/material/Box";
 import Footer from './Components/Footer/footer';
 import TechnologySection from './Components/Technology/techSection';
@@ -28,7 +29,16 @@ const theme = createTheme({
       main: '#5F7367',
       light: '#7F8F85',
       dark: '#425048'
-    }
+    },
+   diverStyle:{ 
+   py: 0,
+  width: '100%',
+  maxWidth: 360,
+  borderRadius: 2,
+  border: '1px solid',
+  borderColor: 'divider',
+  backgroundColor: 'background.paper',
+   }
   }
 });
 
@@ -47,21 +57,26 @@ const {data, error, isLoading } = useGetPokemonByNameQuery('eevee')
       <NavBar className='app-nav-bar' positon='sticky' /> 
       <header className="App-header">
       <div className='hero-image'>
+      <h1 className='hero-title'>A Refreshed Look from the Norm</h1>
         <div className='hero-text'>
-         <h1 className='hero-title'>A Refreshed Look from the Norm</h1>
+         
+         <button className='.btn-primary'></button>
          <p className='hero-p'>No Bias</p>
-         <Button>Jump to your Favorite Section</Button>
         </div>
-      </div>
+        </div>
       </header>
      <HeroSlide />
-      
+     <hr className='divider-1'>
+      <Divider variant='middle'sx={{bgcolor:'whitesmoke'}}/>
+      </hr>
       <main>
+        <hr className='divider-2'>
      <NewsArticle/>
     
-
+     </hr>
      <div className="Business.Section.div">
      <div>
+     <hr className='divider-1'>
         <h3>Whos that pokemon!!</h3>
         {error ? (
           <>Oh no, there was an error</>
@@ -74,24 +89,32 @@ const {data, error, isLoading } = useGetPokemonByNameQuery('eevee')
           </>
         ) : null
       }
-        
+        </hr>
          </div>
+         
      </div>
+     <hr className='divider-3'>
      <div className='Technology.Section.div'>
       <Container>
         <TechnologySection />
         </Container>
      </div>
+     </hr>
      <div className='Politics.Section.div'>
+     <hr>
       <PoliticsSection />
+      </hr>
      </div>
+     
   </main>
+  <hr className='divider-4'>
       <div className='footer-container'>
         Refreshed news
+        
        <Footer />
       </div>
+      </hr>
       </ThemeProvider>
-      
     </div>
   );
 }
