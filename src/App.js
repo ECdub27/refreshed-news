@@ -53,69 +53,45 @@ const {data, error, isLoading } = useGetPokemonByNameQuery('eevee')
  
   return (
     <div className="App">
-    <ThemeProvider theme={theme}>
+       <ThemeProvider theme={theme}>
+        <div className='flex-container1'>
+      <div className='search-bar'>
+      <Box >
       <NavBar className='app-nav-bar' positon='sticky' /> 
+      </Box>
+      </div>
+    
+      
       <header className="App-header">
       <div className='hero-image'>
       <h1 className='hero-title'>A Refreshed Look from the Norm</h1>
         <div className='hero-text'>
          
-         <button className='.btn-primary'></button>
-         <p className='hero-p'>No Bias</p>
-        </div>
-        </div>
-      </header>
-     <HeroSlide />
-     <hr className='divider-1'>
-      <Divider variant='middle'sx={{bgcolor:'whitesmoke'}}/>
-      </hr>
-      <main>
-        <hr className='divider-2'>
-     <NewsArticle/>
-    
-     </hr>
-     <div className="Business.Section.div">
-     <div>
-     <hr className='divider-1'>
-        <h3>Whos that pokemon!!</h3>
-        {error ? (
-          <>Oh no, there was an error</>
-        ) : isLoading ? (
-          <>Loading...</>
-        ) : data ? (
-          <>
-          <p>{data.species.name}</p> 
-          <img src={data.sprites.front_shiny} alt={data.species.name}/>  
-          </>
-        ) : null
-      }
-        </hr>
-         </div>
-         
-     </div>
-     <hr className='divider-3'>
-     <div className='Technology.Section.div'>
-      <Container>
-        <TechnologySection />
-        </Container>
-     </div>
-     </hr>
-     <div className='Politics.Section.div'>
-     <hr>
-      <PoliticsSection />
-      </hr>
-     </div>
-     
-  </main>
-  <hr className='divider-4'>
-      <div className='footer-container'>
-        Refreshed news
         
-       <Footer />
+        </div>
+        </div>
+        <ul>
+          <li>Top Headlines 🗞</li>
+          <li>Business Sources 📈 </li>
+          <li>Politics 👨‍💼 👩‍💼</li>
+          <li>Technology 💻 </li>
+        </ul>
+        <hr className='divider-1'/>
+      </header>
+     
       </div>
-      </hr>
-      </ThemeProvider>
+    <main>
+  <div className='top-headlines-div'>
+    <HeroSlide />
     </div>
+    </main>
+      
+    
+
+</ThemeProvider>
+
+ </div>
+   
   );
 }
 
