@@ -23,7 +23,7 @@ const TopHeadlines = () =>{
       ) : data ? (
        
         <>
-        <ImageList sx={{width: 900, height: 700, padding:2}}>
+        <ImageList sx={{width: 900, height: 800, padding:2}}>
         {data.articles.map((article, index) => (
           <ImageListItem key={article.urlToImage}> 
           <Container> 

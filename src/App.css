@@ -14,9 +14,8 @@ html, body{
 .App {  /* parent div */
   text-align: center;
   background-color: #282c34;
-  display: flex;
   display:flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   justify-content: space-around;
   padding:0;
   margin: 0;
@@ -26,7 +25,7 @@ html, body{
 .search-bar{
   display: flex;
   flex-flow: row wrap;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 @media all and(max-width: 800px){
   .search-bar{
@@ -48,7 +47,7 @@ html, body{
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
- 
+ margin-left: 150px;
 }
 
 
@@ -64,21 +63,43 @@ html, body{
   }
 
  /* div styles */
+.top-headlines-div-flex-container{
+display: flex;
+flex-wrap: wrap;
+}
+.top-headlines-content{
+  display: flex;
+  
+padding: 2%;
+flex-grow: 1 ;
+flex-basis: 16%;
+max-width: 100%;
+justify-content: space-evenly;
+}
+.business-list-articles{
 
+}
  .Business.Section.div{
 padding-top: 20px;
 width: 100px;
   height: 100px;
+  justify-content: center;
+  display: flex;
+flex-wrap: wrap;
  }
  .Tech.Section.div{
   padding-top: 20px;
   width: 100px;
   height: 100px;
+  display: flex;
+flex-wrap: wrap;
  }
  .Poli.Section.div{
   padding-top: 20px;
   width: 100px;
   height: 100px;
+  display: flex;
+flex-wrap: wrap;
  }
   /* Footer Styles */ 
 footer{

@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import NavBar from './Components/NavBar/navBar';
 import HeroSlide from './Components/Header/hero';
@@ -10,7 +10,6 @@ import Button from '@mui/material/Button';
 import { ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material';
 import Container from '@mui/material/Container';
-import Divider from '@mui/material/Divider';
 import  Box  from "@mui/material/Box";
 import Footer from './Components/Footer/footer';
 import TechnologySection from './Components/Technology/techSection';
@@ -54,15 +53,13 @@ const {data, error, isLoading } = useGetPokemonByNameQuery('eevee')
   return (
     <div className="App">
        <ThemeProvider theme={theme}>
-        <div className='flex-container1'>
-      <div className='search-bar'>
+       <div className='search-bar'>
       <Box >
       <NavBar className='app-nav-bar' positon='sticky' /> 
       </Box>
       </div>
-    
-      
-      <header className="App-header">
+        <div className='flex-container1'>
+    <header className="App-header">
       <div className='hero-image'>
       <h1 className='hero-title'>A Refreshed Look from the Norm</h1>
         <div className='hero-text'>
@@ -71,22 +68,28 @@ const {data, error, isLoading } = useGetPokemonByNameQuery('eevee')
         </div>
         </div>
         <ul>
-          <li>Top Headlines 🗞</li>
-          <li>Business Sources 📈 </li>
-          <li>Politics 👨‍💼 👩‍💼</li>
-          <li>Technology 💻 </li>
+          <li><a href='#headlines'>Top Headlines 🗞</a></li>
+          <li><a href='#business'>Business Sources 📈 </a></li>
+          <li><a href='#polly'>Politics 👨‍💼 👩‍💼 </a></li>
+          <li><a href='#tech'>Technology 💻 </a></li>
         </ul>
         <hr className='divider-1'/>
       </header>
      
       </div>
     <main>
-  <div className='top-headlines-div'>
-    <HeroSlide />
-    <NewsArticle/>
+  <div className='top-headlines-div-flex-container'>
+    <div className='top-headlines-content'>
+    <HeroSlide id='headlines' />
+    <div className='business-list-articles'>
+    <NewsArticle id='business'/>
+    </div>
+    </div>
     </div>
     </main>
+    
     <div className="Business.Section.div">
+    
 <div>
 <hr className='divider-3'/>
    <h3>Whos that pokemon!!</h3>
@@ -111,14 +114,14 @@ const {data, error, isLoading } = useGetPokemonByNameQuery('eevee')
 
 <div className='Technology.Section.div'>
  <Container>
-   <TechnologySection />
+   <TechnologySection id='tech' />
    </Container>
 </div>
 
 <div className='Politics.Section.div'>
 <hr/>
 
- <PoliticsSection />
+ <PoliticsSection id='polly' />
  
 </div>
 
