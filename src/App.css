@@ -10,19 +10,17 @@ ul{
 html, body{
   height: 100%
 }
-.flex-container1{
+
+.App {  /* parent div */
+  text-align: center;
+  background-color: #282c34;
+  display: flex;
   display:flex;
   flex-flow: row wrap;
   justify-content: space-around;
   padding:0;
   margin: 0;
   list-style: none;
-}
-.App {  /* parent div */
-  text-align: center;
-  background-color: #282c34;
-  display: flex;
- 
   
 }
 .search-bar{
