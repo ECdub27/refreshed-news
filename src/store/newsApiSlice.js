@@ -26,12 +26,15 @@ export const apiSlice = createApi({
         }),
         GetTechnologyArticles: builder.query({
             query: () => 'newsapi.org/v2/everything?domains=techcrunch.com,thenextweb.com&pageSize=20&apiKey=78df58fec805459caf086c63cbe2b3a9'
+        }),
+        getArticlesById: builder.query({
+            query:() => 'https://newsapi.org/v2/everything?domains=google.com,nytimes.com&apiKey=78df58fec805459caf086c63cbe2b3a9'
         })
         })
     })
 
 
 
-export const { useGetPokemonByNameQuery, useGetBusinessArticlesQuery, useGetAllArticlesQuery,useGetPoliticsArticlesQuery, useGetTechnologyArticlesQuery } = apiSlice
+export const { useGetPokemonByNameQuery, useGetBusinessArticlesQuery, useGetAllArticlesQuery,useGetPoliticsArticlesQuery, useGetTechnologyArticlesQuery, useGetArticlesByIdQuery } = apiSlice
 
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -8,24 +8,17 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-
-
-
+import LinearBuffer from '../../linearBuffer';
+import { useGetArticlesByIdQuery } from '../../store/newsApiSlice';
 // sample post 
-{/*
-export const saveNewTodo = createAsyncThunk('todos/saveNewTodo', async text => {
-  const initialTodo = { text }
-  const response = await client.post('/fakeApi/todos', { todo: initialTodo })
-  return response.todo
-})
-*/}
+
 
 const Search = styled('div')(({ theme }) => ({
   position: 'absolute',
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.secondary.main, 0.15),
+  backgroundColor: '#0A0F25',
   '&:hover': {
-    backgroundColor: alpha(theme.palette.secondary.main, 0.25),
+    backgroundColor: '#5F7367',
   },
   marginRight: theme.spacing(2),
   marginLeft: 0,
@@ -62,13 +55,22 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 
 
-
 function NavBar(){
-  
+  const {data, isLoading, error} = useGetArticlesByIdQuery();
   
 
+const handleSubmit =(e) =>{
+if(e.key === 'enter'){
+  e.preventDefault();
+}
+setTimeout(() =>{
+  <LinearBuffer />
+}, 5000);
+}
 
-  
+
+
+
 
   return (
   
@@ -92,14 +94,19 @@ function NavBar(){
           >
             Refreshed News
           </Typography>
-          <Search>
+          <Search onSubmit={handleSubmit}
+          
+          >
+
+            
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
-            />
+              />
+            
           </Search>
         </Toolbar>
       </AppBar>

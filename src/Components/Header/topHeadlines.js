@@ -36,7 +36,7 @@ const TopHeadlines = () =>{
            subtitle={article.description & article.url }
            position="below"
            />
-           <a rel='noreferrer' href={article.urlToImage} alt='article url'><a href={article.url} alt='article url'> {article.url} </a></a>
+           <a rel='noreferrer' href={article.urlToImage} alt='article url'><a rel='noreferrer' target='_blank'href={article.url} alt='article url'> {article.url} </a></a>
            </Typography>
             </Container>
           <div className='headlines-div'key={index}>
@@ -50,8 +50,10 @@ const TopHeadlines = () =>{
         </>
       ) : null}
  </div>
+
     );
 
 }
 
 export default TopHeadlines;
+

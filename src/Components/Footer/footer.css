@@ -1,17 +1,39 @@
+
 .footer {
-    background-color: #1d1d1d;
+    background-color: #3d4148;
     padding-top: 2rem;
     padding-bottom: 4rem;
+    display:flex;
+    flex-flow: column wrap;
+  justify-content: space-around;
+  padding:0;
+  margin: 0;
   }
+  .footer-div{
+  width:100%;
+  border-color: #E0607E;
   
+  }
   .title {
-    color: #fff;
+    color: #DDF8E8;
   }
-  
+   .row-justify-content-around{
+    border-color: #E0607E;
+  }
+  .copyright{
+    display:flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
   .description {
-    color: #fff;
+    color: #E0607E;
+    font-size: 18px;
+    display:flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    
   }
-  
+ 
   .footerlink,
   .footerlink:hover {
     color: #fff;

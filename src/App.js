@@ -2,10 +2,8 @@
 import './App.css';
 import NavBar from './Components/NavBar/navBar';
 import HeroSlide from './Components/Header/hero';
-import {useState, useEffect} from 'react';
 import NewsArticle from './Components/Home/newsArticle';
 import { useGetPokemonByNameQuery } from './store/newsApiSlice';
-import Button from '@mui/material/Button';
 // MUI themee provider
 import { ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material';
@@ -47,9 +45,6 @@ const theme = createTheme({
 
 function App() {
   // make nav bar sticky
-
-const {data, error, isLoading } = useGetPokemonByNameQuery('eevee')
- 
   return (
     <div className="App">
        <ThemeProvider theme={theme}>
@@ -58,6 +53,7 @@ const {data, error, isLoading } = useGetPokemonByNameQuery('eevee')
       <NavBar className='app-nav-bar' positon='sticky' /> 
       </Box>
       </div>
+      <Box sx={{borderColor:'#E0607E'}}>
         <div className='flex-container1'>
     <header className="App-header">
       <div className='hero-image'>
@@ -77,6 +73,7 @@ const {data, error, isLoading } = useGetPokemonByNameQuery('eevee')
       </header>
      
       </div>
+      </Box>
     <main>
   <div className='top-headlines-div-flex-container'>
     <div className='top-headlines-content'>
@@ -92,25 +89,13 @@ const {data, error, isLoading } = useGetPokemonByNameQuery('eevee')
     
 <div>
 <hr className='divider-3'/>
-   <h3>Whos that pokemon!!</h3>
-   {error ? (
-     <>Oh no, there was an error</>
-   ) : isLoading ? (
-     <>Loading...</>
-   ) : data ? (
-     <>
-     <p>{data.species.name}</p> 
-     <img src={data.sprites.front_shiny} alt={data.species.name}/>  
-     </>
-   ) : null
- }
-   
-    </div>
+  
     
+    
+    </div>
+  
 </div>
 
-
-<hr className='divider-3'/>
 
 <div className='Technology.Section.div'>
  <Container>
@@ -125,12 +110,8 @@ const {data, error, isLoading } = useGetPokemonByNameQuery('eevee')
  
 </div>
 
-
-<hr className='divider-4'/>
-
-
  <div className='footer-container'>
-   Refreshed news
+  
   <Footer />
  </div>
  
